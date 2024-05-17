@@ -39,5 +39,5 @@ jobs:
           REPOSITORY: airbyte-clue-connectors
         run: |
           cd ${{ env.TARGET_DIR }}
-          docker build -t $REGISTRY/$REPOSITORY:${{ env.AIRFLOW_VERSION }} .
-          docker push $REGISTRY/$REPOSITORY:${{ env.AIRFLOW_VERSION }}
+          docker build -t $REGISTRY/$REPOSITORY:${{ env.CONNECTOR_VERSION }} .
+          docker push $REGISTRY/$REPOSITORY:${{ env.CONNECTOR_VERSION }}
