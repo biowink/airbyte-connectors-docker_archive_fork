@@ -523,8 +523,9 @@ class LakehouseWriter:
 
     def _merge_to_destination(self,date_from:str,date_to:str) -> None:
 
-        
-        # Dedup the records
+        # Dedup the records before merging
+        # in cases when there are multiple records for the same key
+        # first those records are deduped based on the key over the cursor field
         merge_key,primary_keys = self._create_merge_key()
         dedup_join = ' and '.join(f'dedup.{field}=tmp.{field}' for field in primary_keys)
         sql = f"""
